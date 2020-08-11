@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9714e3aca7f88d44938b7cebd4b9623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tag: Bullet
+  CollisionTag: Bullet
 --- !u!114 &9214910878527454455
 MonoBehaviour:
   m_ObjectHideFlags: 0

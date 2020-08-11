@@ -20,8 +20,8 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         float movement = mStats.getMovementSpeed() * Time.deltaTime;
-        if(IsGoingRight == true) transform.Translate(movement, 0, 0);
-        if (IsGoingRight == false) transform.Translate(-movement, 0, 0);
+        //if(IsGoingRight == true) transform.Translate(movement, 0, 0);
+        //if (IsGoingRight == false) transform.Translate(-movement, 0, 0);
 
     }
 

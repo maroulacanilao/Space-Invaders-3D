@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-
+    public string CollisionTag;
     Stats mStats;
     // Start is called before the first frame update
     void Start()
@@ -20,12 +22,22 @@ public class BulletCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag(CollisionTag))
         {
             mStats.SetCurrentHp(
                 mStats.getCurrentHp()
-                -collision.gameObject.GetComponent<BulletMovement>().damage);
+                - collision.gameObject.GetComponent<BulletMovement>().damage);
             Destroy(collision.gameObject);
+        }
+        if (this.gameObject.CompareTag("Destruct.Wall"))
+        {
+            if (collision.gameObject.CompareTag("EnemyBullet"))
+            {
+                mStats.SetCurrentHp(
+                        mStats.getCurrentHp()
+                                 - collision.gameObject.GetComponent<BulletMovement>().damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeCamera : MonoBehaviour
 {
     public Camera ThirdPOV;
     public Camera FirstPOV;
 
+    public Image Crosshair;
     bool Switch = true;
     // Start is called before the first frame update
     void Start()
@@ -20,9 +22,9 @@ public class ChangeCamera : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Switch = !Switch;
+            Switch = !Switch; 
+            changeView();
         }
-        changeView();
     }
     void changeView()
     {
@@ -30,11 +32,13 @@ public class ChangeCamera : MonoBehaviour
         {
             ThirdPOV.gameObject.SetActive(true);
             FirstPOV.gameObject.SetActive(false);
+            //Crosshair.gameObject.transform.position = new Vector3(0, 120,0);
         }
         if (Switch == false)
         {
             ThirdPOV.gameObject.SetActive(false);
             FirstPOV.gameObject.SetActive(true);
+           // Crosshair.gameObject.transform.position = new Vector3(0, 0,0);
         }
 
     }
