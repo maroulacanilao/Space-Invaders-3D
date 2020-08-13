@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015395b9383187e47a13287752e7c162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMaxHealth: 4
+  mMaxHealth: 2
   mCurrentHealth: 0
-  mMovementSpeed: 10
+  mMovementSpeed: 20
   mWeaponDamage: 1
 --- !u!54 &4155008402674896436
 Rigidbody:

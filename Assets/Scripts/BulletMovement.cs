@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
     public float speed = 10;
     public Rigidbody rb;
-
+    public GameObject VFX;
+    public GameObject Owner;
     public int damage = 1;
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,8 +18,18 @@ public class BulletMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject != Owner)
+        {
+            var VFXX = Instantiate(VFX, transform.position, transform.rotation);
+            Destroy(VFXX, 1);
+            Destroy(gameObject);
+            
+        }
     }
 }

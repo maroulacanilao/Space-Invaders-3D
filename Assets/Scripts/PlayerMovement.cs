@@ -18,6 +18,16 @@ public class PlayerMovement : MonoBehaviour
         movement *= Time.deltaTime;
 
         transform.Translate(movement, 0, 0);
+
+        //Debug//
+        if(Input.GetKey(KeyCode.K))
+        {
+            GameObject[] Fleet = GameObject.FindGameObjectsWithTag("Enemy");
+            for(int i=0;i<Fleet.Length;i++)
+            {
+                Destroy(Fleet[i].gameObject);
+            }
+        }
     }
 
 }

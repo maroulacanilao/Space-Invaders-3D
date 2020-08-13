@@ -27,7 +27,6 @@ public class BulletCollision : MonoBehaviour
             mStats.SetCurrentHp(
                 mStats.getCurrentHp()
                 - collision.gameObject.GetComponent<BulletMovement>().damage);
-            Destroy(collision.gameObject);
         }
     }
 }

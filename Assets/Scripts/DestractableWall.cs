@@ -14,7 +14,7 @@ public class DestractableWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0) Destroy(this.gameObject);
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -22,13 +22,12 @@ public class DestractableWall : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             hp -= collision.gameObject.GetComponent<BulletMovement>().damage;
-            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            hp -= collision.gameObject.GetComponent<BulletMovement>().damage;
         }
+        if (hp <= 0) Destroy(this.gameObject);
     }
 }

@@ -55,6 +55,8 @@ public class BulletShooter : MonoBehaviour
         {
             GameObject Bullet = Instantiate(BulletPrefab, Nozzle.transform.position, transform.rotation) as GameObject;
             Bullet.GetComponent<BulletMovement>().damage = mStats.getWeaponDmg();
+            Bullet.transform.gameObject.tag = "Bullet";
+            Bullet.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
 
 
             //audioSource.PlayOneShot(ShootSFX);

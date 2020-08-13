@@ -47,7 +47,7 @@ public class Stats : MonoBehaviour
         mCurrentHealth = Hp;
     }
 
-    public void setSpeed(int speed)
+    public void setSpeed(float speed)
     {
         mMovementSpeed = speed;
     }

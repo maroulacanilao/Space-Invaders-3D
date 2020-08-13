@@ -10,13 +10,15 @@ public class EnemyBehaviour : MonoBehaviour
     public float RateOfFire = 1;
     public int scoreOnKill = 1;
     bool  IsGoingRight = true;
-
+    public int locationNum;
     Stats mStats;
 
     void Start()
     {
         mStats = this.gameObject.GetComponent<Stats>();
         InvokeRepeating("EnemyShoot", 0, RateOfFire);
+
+
     }
 
     void Update()
@@ -24,12 +26,20 @@ public class EnemyBehaviour : MonoBehaviour
         float movement = mStats.getMovementSpeed() * Time.deltaTime;
         if(IsGoingRight == true) transform.Translate(movement, 0, 0);
         if (IsGoingRight == false) transform.Translate(-movement, 0, 0);
+
+        if (mStats.getCurrentHp() <= 0)
+        {
+            Destroy(this.gameObject);
+            PlayerUI.totalScore += scoreOnKill;
+        }
     }
 
     void EnemyShoot()
     {
         GameObject EnemyBullet = Instantiate(bulletPrefab, Nozzle.transform.position, transform.rotation) as GameObject;
-        EnemyBullet.GetComponent<BulletMovement>().damage = mStats.getWeaponDmg();
+        var EB = EnemyBullet.GetComponent<BulletMovement>();
+        EB.damage = mStats.getWeaponDmg();
+        EB.Owner = this.gameObject;
         Destroy(EnemyBullet, 5);
     }
 
