@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Destruct.Wall
   - Wall.Trigger
+  - Wall.Trigger.RNG
   layers:
   - Default
   - TransparentFX

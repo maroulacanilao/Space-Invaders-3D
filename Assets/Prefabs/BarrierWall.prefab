@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7528345207947173748}
   - component: {fileID: 7528345207947173751}
   - component: {fileID: 7528345207947173750}
-  - component: {fileID: 7528345207947173753}
-  - component: {fileID: 9214910878527454455}
+  - component: {fileID: 8260475830502471067}
   m_Layer: 0
   m_Name: BarrierWall
   m_TagString: Destruct.Wall
@@ -95,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7528345207947173753
+--- !u!114 &8260475830502471067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,24 +103,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7528345207947173755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9714e3aca7f88d44938b7cebd4b9623, type: 3}
+  m_Script: {fileID: 11500000, guid: 162f8e17cb8845e4fbe7d8dc41f785d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: Bullet
---- !u!114 &9214910878527454455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528345207947173755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 015395b9383187e47a13287752e7c162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mMaxHealth: 1
-  mCurrentHealth: 0
-  mMovementSpeed: 0
-  mWeaponDamage: 1
-  scoreOnKill: 0

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Stats : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class Stats : MonoBehaviour
     [SerializeField] private int mCurrentHealth;
     [SerializeField] private float mMovementSpeed = 0;
     [SerializeField] private int mWeaponDamage = 1;
-    [SerializeField] private int scoreOnKill = 1;
+    
 
     private void Start()
     {
@@ -16,20 +18,8 @@ public class Stats : MonoBehaviour
     }
     private void Update()
     {
-        if (mCurrentHealth <= 0)
-        {
-            mCurrentHealth = 0;
-            if(!this.gameObject.CompareTag("Player"))
-            {
-                Destroy(this.gameObject);
-                Score.totalScore += scoreOnKill;
-
-            }
-            if (this.gameObject.CompareTag("Player"))
-            {
-                Debug.Log("u lose");
-            }
-        }
+        if (mCurrentHealth <= 0) mCurrentHealth = 0;
+        if (mCurrentHealth > mMaxHealth) mCurrentHealth = mMaxHealth;
     }
 
     public int getCurrentHp()
@@ -65,5 +55,11 @@ public class Stats : MonoBehaviour
     public void setWeaponDmg(int Damage)
     {
         mWeaponDamage = Damage;
+    }
+
+    public float calculateHealth()
+    {
+        return Convert.ToSingle(mCurrentHealth) / Convert.ToSingle(mMaxHealth);
+
     }
 }

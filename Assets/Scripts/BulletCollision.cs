@@ -29,15 +29,5 @@ public class BulletCollision : MonoBehaviour
                 - collision.gameObject.GetComponent<BulletMovement>().damage);
             Destroy(collision.gameObject);
         }
-        if (this.gameObject.CompareTag("Destruct.Wall"))
-        {
-            if (collision.gameObject.CompareTag("EnemyBullet"))
-            {
-                mStats.SetCurrentHp(
-                        mStats.getCurrentHp()
-                                 - collision.gameObject.GetComponent<BulletMovement>().damage);
-                Destroy(collision.gameObject);
-            }
-        }
     }
 }
