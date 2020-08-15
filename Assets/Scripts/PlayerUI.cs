@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerUI : MonoBehaviour
 
     public Slider healthSlider;
     public Image Fill;
+    
 
     Stats mStats;
 
@@ -48,4 +50,6 @@ public class PlayerUI : MonoBehaviour
             //Time.timeScale = 0;
         }
     }
+
+ 
 }

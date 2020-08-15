@@ -59,7 +59,7 @@ public class Stats : MonoBehaviour
 
     public float calculateHealth()
     {
-        return Convert.ToSingle(mCurrentHealth) / Convert.ToSingle(mMaxHealth);
+        return (float)mCurrentHealth / (float)mMaxHealth;
 
     }
 }

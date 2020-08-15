@@ -15,7 +15,6 @@ public class BulletMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
-        
     }
 
     void Update()
@@ -27,7 +26,7 @@ public class BulletMovement : MonoBehaviour
         if (collision.gameObject != Owner)
         {
             var VFXX = Instantiate(VFX, transform.position, transform.rotation);
-            Destroy(VFXX, 1);
+            Destroy(VFXX, VFXX.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
             
         }

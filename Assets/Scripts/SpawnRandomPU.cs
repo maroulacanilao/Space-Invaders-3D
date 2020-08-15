@@ -21,11 +21,7 @@ public class SpawnRandomPU : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > NextActionTime)
-        {
-            NextActionTime += WaitingPeriod;
-            Spawn();
-        }
+       
     }
 
     GameObject RandomPowerUps()
@@ -39,12 +35,16 @@ public class SpawnRandomPU : MonoBehaviour
 
         
     }
-    void Spawn()
+    public void Spawn()
     {
-        float X = Random.Range(-40.0f, 40.0f);
+        float rng = Random.Range(0.0f, 1.0f);
 
-        GameObject PowerUp = Instantiate(RandomPowerUps(), new Vector3(X, 1, 0), transform.rotation);
-        Destroy(PowerUp, 10.0f);
+        if (rng < 0.5f)
+        {
+            float X = Random.Range(-90.0f, 90.0f);
+            GameObject PowerUp = Instantiate(RandomPowerUps(), new Vector3(X, 1, -30), transform.rotation);
+            Destroy(PowerUp, 10.0f);
+        }
     }
 
 }

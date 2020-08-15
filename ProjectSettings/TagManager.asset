@@ -12,7 +12,8 @@ TagManager:
   - Enemy
   - Destruct.Wall
   - Wall.Trigger
-  - Wall.Trigger.RNG
+  - ZTriggers
+  - ZEdge
   layers:
   - Default
   - TransparentFX

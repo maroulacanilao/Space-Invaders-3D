@@ -27,15 +27,9 @@ public class Button : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    public void CheckHighScore()
-    {
-        TitleText.enabled = false;
-        HighScoreText.enabled = true;
-    }
-    
-
     public void Quit()
     {
+        Application.Quit();
         Debug.Log("CLICK");
     }
 

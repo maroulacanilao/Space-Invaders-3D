@@ -9,6 +9,10 @@ public class BulletShooter : MonoBehaviour
     public GameObject BulletPrefab;
     public float timerDestroy = 5;
     public int MagazineSize = 10;
+    public AudioClip ShootSFX;
+    public AudioClip ReloadSFX;
+    public AudioClip DryFire;
+    AudioSource mAudioSource;
 
     int currentBulletCount;
     bool canFire = true;
@@ -21,6 +25,7 @@ public class BulletShooter : MonoBehaviour
     {
         currentBulletCount = MagazineSize;
         mStats = this.gameObject.GetComponent<Stats>();
+        mAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -33,20 +38,22 @@ public class BulletShooter : MonoBehaviour
                 firegun();
             }
             bulletCountUI.text = "Bullet: " + currentBulletCount;
-            if (currentBulletCount == 0)
+            if (currentBulletCount <= 0)
             {
                 canFire = false;
                 bulletCountUI.text = "Empty";
             }
         }
+        if ((!canFire) && (Input.GetKeyDown(KeyCode.Alpha1))) mAudioSource.PlayOneShot(DryFire);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             canFire = false;
+            mAudioSource.PlayOneShot(ReloadSFX);
             bulletCountUI.text = "Reloading..";
             Invoke("reload", reloadtime);
         }
-
+       
     }
 
     void firegun()
@@ -59,7 +66,7 @@ public class BulletShooter : MonoBehaviour
             Bullet.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
 
 
-            //audioSource.PlayOneShot(ShootSFX);
+            mAudioSource.PlayOneShot(ShootSFX);
 
             Destroy(Bullet, timerDestroy);
 
@@ -72,5 +79,4 @@ public class BulletShooter : MonoBehaviour
         currentBulletCount = MagazineSize;
         canFire = true;
     }
-
 }
