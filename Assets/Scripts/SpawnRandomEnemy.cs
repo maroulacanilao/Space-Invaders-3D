@@ -17,14 +17,11 @@ public class SpawnRandomEnemy : MonoBehaviour
 
     int NumOfSpwnEnemy = 0;
     int WaveCount;
-    float mult;
     GameObject[] Fleet;
     struct coordinateXZ
     {
         public float x;
         public float z;
-
-
     }
     coordinateXZ[] location = new coordinateXZ[36];
     void Start()
@@ -45,23 +42,14 @@ public class SpawnRandomEnemy : MonoBehaviour
             XC += 30.0f;
         }
 
-        WaveCount = 0;
-        mult =1.10f;
+        WaveCount = 1;
+        StartCoroutine(SpawnWave());
     }
 
     void Update()
     {
         Fleet = GameObject.FindGameObjectsWithTag("Enemy");
         NumOfSpwnEnemy = Fleet.Length;
-
-
-        if (NumOfSpwnEnemy == 0)
-        {
-            WaveCount++;
-            WaveEnemies();
-            mult += 0.05f;
-        }
-
     }
 
     int RandomLocation()
@@ -84,13 +72,13 @@ public class SpawnRandomEnemy : MonoBehaviour
     void SpawnEnemy()
     {
         int loc = RandomLocation();
-        GameObject SpawnedEnemy = Instantiate(RandomEnemy(), new Vector3(location[loc].x, 1, location[loc].z), transform.rotation);
+        GameObject SpawnedEnemy = Instantiate(RandomEnemy(), new Vector3(location[loc].x, 1, location[loc].z), transform.rotation,gameObject.transform);
         SpawnedEnemy.GetComponent<EnemyBehaviour>().locationNum = loc;
     }
 
     GameObject RandomEnemy()
     {
-        float x = Random.Range(0, 1.0f) * mult;
+        float x = Random.Range(0, 1.0f) *  (1+(WaveCount/20));
 
         if ((x >= 0.40f) && (x < 0.70f)) return EnemyPrefab_1; //2nd weakest
         if ((x >= 0.70f) && (x < 0.85f)) return EnemyPrefab_2; //3rd Weakest
@@ -101,10 +89,30 @@ public class SpawnRandomEnemy : MonoBehaviour
 
     void WaveEnemies()
     {
-        int x = (int)mult * 3;
+        int x =((WaveCount*5)/2);
         for(int i = 0; i<x;i++)
         {
             SpawnEnemy();
+        }
+        WaveCount++;
+    }
+
+    IEnumerator SpawnWave()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1); //check every 1 sec
+            if (NumOfSpwnEnemy == 0)
+            {
+                WaveUI.SetActive(true);
+                for (int i = 3; i > 0; i--)
+                {
+                    WaveText.text = "Wave " + WaveCount + " Starts in \n" + i;
+                    yield return new WaitForSeconds(1);
+                } //CountDown
+                WaveEnemies();
+                WaveUI.SetActive(false);
+            }
         }
     }
 }

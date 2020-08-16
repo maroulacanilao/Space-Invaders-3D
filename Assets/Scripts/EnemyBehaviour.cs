@@ -13,7 +13,6 @@ public class EnemyBehaviour : MonoBehaviour
     public float RateOfFire = 1;
     public int scoreOnKill = 1;
     public int locationNum;
-    public GameObject SpawnRandomPU;
     public GameObject ExplosionVFX;
     public static AudioSource mAudioSource;
     public AudioClip EnemyShootSFX;
@@ -28,15 +27,15 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         mStats = this.gameObject.GetComponent<Stats>();
-        InvokeRepeating("EnemyShoot", 1, RateOfFire);
         OnEdge = false;
         switchNumber = 0;
         mAudioSource = GetComponent<AudioSource>();
+        StartCoroutine(ShootOnROF());
     }
 
     void Update()
     {
-        //EnemyMovemnt();
+        EnemyMovemnt();
 
         //Debug//
         if (Input.GetKey(KeyCode.K))
@@ -65,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
         float rng = Random.Range(0, 1.0f);
         if (rng > 0.60f)
         {
-            SpawnRandomPU.GetComponent<SpawnRandomPU>().Spawn();
+            GetComponentInParent<SpawnRandomPU>().Spawn();
         }
 
         var DVFX = Instantiate(ExplosionVFX, transform.position, transform.rotation);
@@ -133,4 +132,12 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    IEnumerator ShootOnROF()
+    {
+        while(mStats.getCurrentHp()>0)
+        {
+            yield return new WaitForSeconds(RateOfFire);
+            EnemyShoot();
+        }
+    }
 }

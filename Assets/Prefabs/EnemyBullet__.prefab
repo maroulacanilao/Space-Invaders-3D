@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4093cc5b6e47c4ab051935eb13d4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 500
   rb: {fileID: 0}
   VFX: {fileID: 4787146697146794734, guid: e9050f838eb01db44b8958e4d8266866, type: 3}
   Owner: {fileID: 0}

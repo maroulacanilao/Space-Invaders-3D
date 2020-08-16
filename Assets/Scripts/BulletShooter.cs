@@ -33,7 +33,7 @@ public class BulletShooter : MonoBehaviour
         if (canFire == true)
         {
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 firegun();
             }
@@ -44,7 +44,7 @@ public class BulletShooter : MonoBehaviour
                 bulletCountUI.text = "Empty";
             }
         }
-        if ((!canFire) && (Input.GetKeyDown(KeyCode.Alpha1))) mAudioSource.PlayOneShot(DryFire);
+        if ((!canFire) && (Input.GetKeyDown(KeyCode.Space))) mAudioSource.PlayOneShot(DryFire);
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -60,7 +60,7 @@ public class BulletShooter : MonoBehaviour
     {
         if (currentBulletCount > 0)
         {
-            GameObject Bullet = Instantiate(BulletPrefab, Nozzle.transform.position, transform.rotation) as GameObject;
+            GameObject Bullet = Instantiate(BulletPrefab, Nozzle.transform.position, transform.rotation);
             Bullet.GetComponent<BulletMovement>().damage = mStats.getWeaponDmg();
             Bullet.transform.gameObject.tag = "Bullet";
             Bullet.GetComponent<Renderer>().material.SetColor("_Color", Color.green);

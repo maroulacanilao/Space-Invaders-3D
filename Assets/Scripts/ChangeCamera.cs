@@ -32,13 +32,13 @@ public class ChangeCamera : MonoBehaviour
         {
             ThirdPOV.gameObject.SetActive(true);
             FirstPOV.gameObject.SetActive(false);
-            //Crosshair.gameObject.transform.position = new Vector3(0, 120,0);
+            Crosshair.gameObject.transform.localPosition = new Vector3(0, 70,0);
         }
         if (Switch == false)
         {
             ThirdPOV.gameObject.SetActive(false);
             FirstPOV.gameObject.SetActive(true);
-           // Crosshair.gameObject.transform.position = new Vector3(0, 0,0);
+            Crosshair.gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
 
     }

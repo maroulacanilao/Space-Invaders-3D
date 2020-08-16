@@ -6,7 +6,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     Stats mStats;
 
-    public GameObject LoseScreen;
+    public GameObject Canvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,10 @@ public class PlayerBehavior : MonoBehaviour
         movement *= Time.deltaTime;
 
         transform.Translate(movement, 0, 0);
+
+
+        //Debug//
+        if (Input.GetKeyDown(KeyCode.End)) Dies();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,12 +41,10 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+
     void Dies()
     {
-        gameObject.GetComponentInChildren<Renderer>().enabled = false;
-        gameObject.GetComponent<PlayerBehavior>().enabled = false;
-        gameObject.GetComponent<BulletShooter>().enabled = false;
         Time.timeScale = 0;
-        LoseScreen.SetActive(true);
+        Canvas.GetComponent<LoseScreen>().enabled = true;
     }
 }

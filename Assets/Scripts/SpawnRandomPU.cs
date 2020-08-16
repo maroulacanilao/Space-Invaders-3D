@@ -9,9 +9,6 @@ public class SpawnRandomPU : MonoBehaviour
     public GameObject Heal;
     public GameObject SpeedUp;
     public GameObject DoubleDmg;
-
-    public int NextActionTime = 1;
-    public int WaitingPeriod = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +28,6 @@ public class SpawnRandomPU : MonoBehaviour
         if (rng < 0.50f) return Heal;
         if ((rng >= 0.50f) && (rng < 0.75f)) return SpeedUp;
         return DoubleDmg;
-
-
-        
     }
     public void Spawn()
     {
