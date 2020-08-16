@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
-    public Text TitleText;
-    public Text HighScoreText;
-
     // Start is called before the first frame update
     void Start()
     {

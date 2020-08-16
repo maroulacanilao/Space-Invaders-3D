@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class EnemyBehaviour : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public GameObject Body;
     public Transform Nozzle;
     public float RateOfFire = 1;
     public int scoreOnKill = 1;
@@ -38,16 +37,17 @@ public class EnemyBehaviour : MonoBehaviour
         EnemyMovemnt();
 
         //Debug//
-        if (Input.GetKey(KeyCode.K))
-        {
-            Dies();
+        //if (Input.GetKey(KeyCode.K))
+        //{
+        //    Dies();
 
-        }
+        //}
     }
 
     void EnemyShoot()
     {
-        GameObject EnemyBullet = Instantiate(bulletPrefab, Nozzle.transform.position, transform.rotation) as GameObject;
+        GameObject EnemyBullet = Instantiate(bulletPrefab, Nozzle.transform.position, transform.rotation);
+        EnemyBullet.tag = "EnemyBullet";
         var EB = EnemyBullet.GetComponent<BulletMovement>();
         EB.damage = mStats.getWeaponDmg();
         EB.Owner = this.gameObject;

@@ -29,7 +29,7 @@ public class LoseScreen : MonoBehaviour
 
         FinalScore = PlayerUI.totalScore;
 
-        FinalScoreText.text = "Final Score: \n" + FinalScore;
+        FinalScoreText.text = "Final Score: " + FinalScore;
         CheckForHighScore(FinalScore);
     }
 
@@ -38,10 +38,10 @@ public class LoseScreen : MonoBehaviour
     {
 
         //Debug/
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            PlayerPrefs.DeleteAll();
-        }
+        //if (Input.GetKeyDown(KeyCode.Delete))
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //}
     }
 
     public void Retry()
@@ -111,11 +111,11 @@ public class LoseScreen : MonoBehaviour
         LoseScreenUI.SetActive(false);
         HSSCreen.SetActive(true);
 
-        HSText_1.text = "High Score #1 : " + PlayerPrefs.GetInt("HighScore" + 0, 0);
-        HSText_2.text = "High Score #2 : " + PlayerPrefs.GetInt("HighScore" + 1, 0);
-        HSText_3.text = "High Score #3 : " + PlayerPrefs.GetInt("HighScore" + 2, 0);
-        HSText_4.text = "High Score #4 : " + PlayerPrefs.GetInt("HighScore" + 3, 0);
-        HSText_5.text = "High Score #5 : " + PlayerPrefs.GetInt("HighScore" + 4, 0);
+        HSText_1.text = "1st Place : " + PlayerPrefs.GetInt("HighScore" + 0, 0);
+        HSText_2.text = "2nd Place : " + PlayerPrefs.GetInt("HighScore" + 1, 0);
+        HSText_3.text = "3rd Place : " + PlayerPrefs.GetInt("HighScore" + 2, 0);
+        HSText_4.text = "4th Place : " + PlayerPrefs.GetInt("HighScore" + 3, 0);
+        HSText_5.text = "5th Place : " + PlayerPrefs.GetInt("HighScore" + 4, 0);
     }
 
     void NewHighScore(int i)

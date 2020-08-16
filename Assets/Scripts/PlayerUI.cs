@@ -23,7 +23,7 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score: " + totalScore;
+        scoreText.text = "" + totalScore;
         HealthBar();
     }
 

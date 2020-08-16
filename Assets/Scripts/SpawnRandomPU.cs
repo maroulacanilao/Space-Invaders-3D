@@ -36,7 +36,7 @@ public class SpawnRandomPU : MonoBehaviour
         if (rng < 0.5f)
         {
             float X = Random.Range(-90.0f, 90.0f);
-            GameObject PowerUp = Instantiate(RandomPowerUps(), new Vector3(X, 1, -30), transform.rotation);
+            GameObject PowerUp = Instantiate(RandomPowerUps(), new Vector3(X, 1, -40), transform.rotation);
             Destroy(PowerUp, 10.0f);
         }
     }
