@@ -7,22 +7,22 @@ public class PlayerBehavior : MonoBehaviour
     Stats mStats;
 
     public GameObject Canvas;
+
+    float MinX = -100;
+    float MaxX = 100;
     // Start is called before the first frame update
     void Start()
     {
         mStats = GetComponent<Stats>();
         Time.timeScale = 1;
+        MinX = -95.0f;
+        MaxX = 95.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float movement = Input.GetAxis("Horizontal") * mStats.getMovementSpeed();
-        movement *= Time.deltaTime;
-
-        transform.Translate(movement, 0, 0);
-
-
+        PlayerMovement();
         //Debug//
         if (Input.GetKeyDown(KeyCode.End)) Dies();
     }
@@ -46,5 +46,14 @@ public class PlayerBehavior : MonoBehaviour
     {
         Time.timeScale = 0;
         Canvas.GetComponent<LoseScreen>().enabled = true;
+    }
+
+    void PlayerMovement()
+    {
+        var horizontal = Input.GetAxis("Horizontal") * mStats.getMovementSpeed() * Time.deltaTime;
+
+        var pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x + horizontal, MinX, MaxX);
+        transform.position = pos;
     }
 }
