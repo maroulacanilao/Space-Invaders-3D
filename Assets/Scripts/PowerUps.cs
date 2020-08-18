@@ -103,7 +103,7 @@ public class PowerUps : MonoBehaviour
     IEnumerator Heal()
     {
         HealText.gameObject.SetActive(true);
-        int HealValue = Random.Range(1, 3);
+        int HealValue = Random.Range(1, 4);
         mStats.SetCurrentHp(mStats.getCurrentHp() + HealValue);
         HealText.text = "+" + HealValue;
         PlayEffects(Heal_VFX, Heal_SFX, 2);

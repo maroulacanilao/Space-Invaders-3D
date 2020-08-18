@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class PauseScript : MonoBehaviour
     public GameObject PauseMenu_Panel;
     public GameObject QuitMenu_Panel;
     public GameObject PlayerUI;
+    public GameObject HintBox;
+    public Slider HintBoxTimer;
 
     public static bool IsGamePaused = false;
+
+    void Start()
+    {
+        StartCoroutine(TutorialHint(20));   
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,5 +56,17 @@ public class PauseScript : MonoBehaviour
     public void yesQuit()
     {
         SceneManager.LoadScene("Start");
+    }
+
+    IEnumerator TutorialHint(int time)
+    {
+        HintBox.SetActive(true);
+        for(int i = time; i>0;i--)
+        {
+            float x = (float)i / (float)time;
+            HintBoxTimer.value = x;
+            yield return new WaitForSeconds(1);
+        }
+        HintBox.SetActive(false);
     }
 }

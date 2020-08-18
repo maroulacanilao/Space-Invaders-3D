@@ -24,7 +24,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         PlayerMovement();
         //Debug//
-        if (Input.GetKeyDown(KeyCode.End)) Dies();
+        //if (Input.GetKeyDown(KeyCode.End)) Dies();
     }
 
     private void OnCollisionEnter(Collision collision)
